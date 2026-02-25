@@ -1,0 +1,160 @@
+/* reset css */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  /* 1rem = 10px font: 16 * 62.5 / 100 = 10px; */
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 1800px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #0a0b10 0%, #0f172a 30%, #1e1b4b 60%, #321e81 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-size: 1.6rem;
+  color: #fff;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bg-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  filter: blur(0.2rem);
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.03);
+  border: .1rem solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 .8rem 3.2rem rgba(0, 0, 0, .2);
+  will-change: transform;
+  animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--start-rotation));
+  }
+  50% {
+    transform: translateY(-3rem) rotate(calc(var(
+      --start-rotation) + 10deg));
+  }
+}
+
+.shape:nth-child(1) {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  /* border-radius: [Top-Left] [Top-Right] [Bottom-Right] 
+  [Bottom-Left] / [Top-Left] [Top-Right] [Bottom-Right] 
+  [Bottom-Left]; на горизонтальні (до /) та вертикальні (після /) */
+  top: -5rem;
+  left: -2rem;
+  --start-rotation: 15deg;
+}
+
+.shape:nth-child(2) {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  bottom: -8rem;
+  right: -5rem;
+  background: rgba(255, 140, 0, 0.05);
+  --start-rotation: -20deg;
+  animation-delay: 2s;
+}
+
+.shape:nth-child(3) {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 1.2rem;
+  top: 15%;
+  right: 10%;
+  --start-rotation: 45deg;
+  animation-delay: 4s;
+}
+
+.shape:nth-child(4) {
+  width: 12rem;
+  height: 6rem;
+  border-radius: 5rem;
+  bottom: 25%;
+  left: 5%;
+  --start-rotation: -15deg;
+  animation-delay: 1s;
+}
+
+.shape:nth-child(5) {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  top: 45%;
+  right: 25%;
+  --start-rotation: 0deg;
+  animation-delay: 3s;
+}
+
+.shape:nth-child(6) {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 2rem;
+  top: 35%;
+  left: 20%;
+  --start-rotation: -25deg;
+  animation-delay: 2.5s;
+}
+
+@media (max-width: 768px) {
+  .shape:nth-child(2) {
+    width: 15rem;
+    height: 15rem;
+  }
+
+  .shape:nth-child(4) {
+    display: none;
+  }
+}
+/* Глассморфізм (glassmorphism) — це стиль у дизайні інтерфейсів,
+  який імітує матове скло. Він характеризується напівпрозорими 
+ об'єктами, що розмивають фон під собою, створюючи ефект глибини,
+  багатошаровості та легкості. Цей тренд використовує яскраві 
+  фони, тонку світлу межу на елементах та дає відчуття, що 
+  панелі «плавають» над інтерфейсом.  */
+
+  .glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(2rem);
+    -webkit-backdrop-filter: blur(2rem);
+    border: .1rem solid rgba(255, 255, 255, 0.2);
+    border-radius: 2rem;
+    box-shadow: 0 .8rem 3.2rem rgba(0, 0, 0, .1);
+    transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    isolation: isolate;
+    will-change: transform;
+  }
+
+  .glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
