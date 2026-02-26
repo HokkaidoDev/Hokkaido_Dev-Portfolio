@@ -10,6 +10,7 @@
 html {
   font-size: 62.5%;
   /* 1rem = 10px font: 16 * 62.5 / 100 = 10px; */
+  /* default font-size: 16px */
   scroll-behavior: smooth;
 }
 
@@ -157,4 +158,41 @@ body {
 
   .glass:hover {
     background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1.5rem 4.5rem rgba(0, 0, 0, .15);
+  }
+
+  @media (max-width: 768px) {
+    .glass:hover {
+      transform: none;
+    }
+  }
+
+  header {
+    width: 100%;
+    padding: clamp(1rem, 2vw, 2rem);
+    position: relative;
+    z-index: 2000;
+    transition: all .4s ease;
+  }
+
+  header.scrolled {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.8rem 0rem;
+    z-index: 5000;
+  }
+
+  .container {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 0rem 2rem;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 0rem 1.5rem;
+    }
   }
