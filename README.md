@@ -1,5 +1,5 @@
 # hokkaido-dev-portfolio
-Hokkaido Dev Portfolio Assets.
+Hokkaido Dev Portfolio Assets:
 
 **Hero-content**
 
