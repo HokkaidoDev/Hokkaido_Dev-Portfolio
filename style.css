@@ -69,7 +69,11 @@ body {
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   /* border-radius: [Top-Left] [Top-Right] [Bottom-Right] 
   [Bottom-Left] / [Top-Left] [Top-Right] [Bottom-Right] 
-  [Bottom-Left]; на горизонтальні (до /) та вертикальні (після /) */
+  [Bottom-Left]; на горизонтальні (до /) та вертикальні (після /)
+  асиметричні закруглення */
+  /* Такі значення майже ніхто не пише вручну. Для цього існують
+   генератори, наприклад Fancy Border Radius, де можна візуально
+  "потягати" кути. */
   top: -5rem;
   left: -2rem;
   --start-rotation: 15deg;
@@ -195,4 +199,30 @@ body {
     .container {
       padding: 0rem 1.5rem;
     }
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+  }
+
+  @media (max-width: 768px) {
+    nav.glass {
+      padding: 1rem 2rem;
+    }
+  }
+
+  header.scrolled nav.glass {
+    border-radius: 0 0 2rem 2rem;
+/* 0 — Верхній лівий кут (border-top-left-radius).
+0 — Верхній правий кут (border-top-right-radius).
+2rem — Нижній правий кут (border-bottom-right-radius).
+2rem — Нижній лівий кут (border-bottom-left-radius). 
+Результат: Верхня частина елемента залишиться з прямими
+кутами, а нижня буде закруглена на 2 одиниці rem. */
+    background: rgba(10, 11, 16, 0.85);
+    border-top: none;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .3);
   }
