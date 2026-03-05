@@ -22,7 +22,13 @@ html {
 
 body {
   font-family: "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #0a0b10 0%, #0f172a 30%, #1e1b4b 60%, #321e81 100%);
+  background: linear-gradient(
+    135deg,
+    #0a0b10 0%,
+    #0f172a 30%,
+    #1e1b4b 60%,
+    #321e81 100%
+  );
   background-attachment: fixed;
   min-height: 100vh;
   overflow-x: hidden;
@@ -47,19 +53,19 @@ body {
 .shape {
   position: absolute;
   background: rgba(255, 255, 255, 0.03);
-  border: .1rem solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 .8rem 3.2rem rgba(0, 0, 0, .2);
+  border: 0.1rem solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.2);
   will-change: transform;
   animation: float 10s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) rotate(var(--start-rotation));
   }
   50% {
-    transform: translateY(-3rem) rotate(calc(var(
-      --start-rotation) + 10deg));
+    transform: translateY(-3rem) rotate(calc(var(--start-rotation) + 10deg));
   }
 }
 
@@ -147,82 +153,113 @@ body {
   фони, тонку світлу межу на елементах та дає відчуття, що 
   панелі «плавають» над інтерфейсом.  */
 
-  .glass {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(2rem);
-    -webkit-backdrop-filter: blur(2rem);
-    border: .1rem solid rgba(255, 255, 255, 0.2);
-    border-radius: 2rem;
-    box-shadow: 0 .8rem 3.2rem rgba(0, 0, 0, .1);
-    transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    isolation: isolate;
-    will-change: transform;
-  }
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(2rem);
+  -webkit-backdrop-filter: blur(2rem);
+  border: 0.1rem solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  isolation: isolate;
+  will-change: transform;
+}
 
+.glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1.5rem 4.5rem rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
   .glass:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-0.5rem);
-    box-shadow: 0 1.5rem 4.5rem rgba(0, 0, 0, .15);
+    transform: none;
   }
+}
 
-  @media (max-width: 768px) {
-    .glass:hover {
-      transform: none;
-    }
-  }
+header {
+  width: 100%;
+  padding: clamp(1rem, 2vw, 2rem);
+  position: relative;
+  z-index: 2000;
+  transition: all 0.4s ease;
+}
 
-  header {
-    width: 100%;
-    padding: clamp(1rem, 2vw, 2rem);
-    position: relative;
-    z-index: 2000;
-    transition: all .4s ease;
-  }
+header.scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0.8rem 0rem;
+  z-index: 5000;
+}
 
-  header.scrolled {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 0.8rem 0rem;
-    z-index: 5000;
-  }
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0rem 2rem;
+}
 
+@media (max-width: 480px) {
   .container {
-    max-width: 120rem;
-    margin: 0 auto;
-    padding: 0rem 2rem;
+    padding: 0rem 1.5rem;
   }
+}
 
-  @media (max-width: 480px) {
-    .container {
-      padding: 0rem 1.5rem;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+}
+
+@media (max-width: 768px) {
+  nav.glass {
+    padding: 1rem 2rem;
   }
+}
 
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 3rem;
-  }
-
-  @media (max-width: 768px) {
-    nav.glass {
-      padding: 1rem 2rem;
-    }
-  }
-
-  header.scrolled nav.glass {
-    border-radius: 0 0 2rem 2rem;
-/* 0 — Верхній лівий кут (border-top-left-radius).
+header.scrolled nav.glass {
+  border-radius: 0 0 2rem 2rem;
+  /* 0 — Верхній лівий кут (border-top-left-radius).
 0 — Верхній правий кут (border-top-right-radius).
 2rem — Нижній правий кут (border-bottom-right-radius).
 2rem — Нижній лівий кут (border-bottom-left-radius). 
 Результат: Верхня частина елемента залишиться з прямими
 кутами, а нижня буде закруглена на 2 одиниці rem. */
-    background: rgba(10, 11, 16, 0.85);
-    border-top: none;
-    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .3);
-  }
+  background: rgba(10, 11, 16, 0.85);
+  border-top: none;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 6000;
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+}
+
+.logo-icon {
+  width: clamp(3.5rem, 5vw, 4.5rem);
+  height: clamp(3.5rem, 5vw, 4.5rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-icon svg {
+  width: 100%;
+  height: 100%;
+}
