@@ -148,7 +148,7 @@ body {
 }
 /* Глассморфізм (glassmorphism) — це стиль у дизайні інтерфейсів,
   який імітує матове скло. Він характеризується напівпрозорими 
- об'єктами, що розмивають фон під собою, створюючи ефект глибини,
+  об'єктами, що розмивають фон під собою, створюючи ефект глибини,
   багатошаровості та легкості. Цей тренд використовує яскраві 
   фони, тонку світлу межу на елементах та дає відчуття, що 
   панелі «плавають» над інтерфейсом.  */
@@ -223,11 +223,11 @@ nav {
 header.scrolled nav.glass {
   border-radius: 0 0 2rem 2rem;
   /* 0 — Верхній лівий кут (border-top-left-radius).
-0 — Верхній правий кут (border-top-right-radius).
-2rem — Нижній правий кут (border-bottom-right-radius).
-2rem — Нижній лівий кут (border-bottom-left-radius). 
-Результат: Верхня частина елемента залишиться з прямими
-кутами, а нижня буде закруглена на 2 одиниці rem. */
+  0 — Верхній правий кут (border-top-right-radius).
+  2rem — Нижній правий кут (border-bottom-right-radius).
+  2rem — Нижній лівий кут (border-bottom-left-radius). 
+  Результат: Верхня частина елемента залишиться з прямими
+  кутами, а нижня буде закруглена на 2 одиниці rem. */
   background: rgba(10, 11, 16, 0.85);
   border-top: none;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
@@ -262,4 +262,21 @@ header.scrolled nav.glass {
 .logo-icon svg {
   width: 100%;
   height: 100%;
+  filter: drop-shadow(0 0 0.8rem rgb(255 255 255 / 0.2));
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.logo:hover .logo-icon svg {
+  transform: rotate(180deg);
+  filter: drop-shadow(0 0 1.2rem rgb(255 140 0 / 0.6));
+}
+
+.logo:hover span {
+  text-shadow: 0 0 1.5rem rgb(255 255 255 / 0.4);
+}
+
+@media (max-width: 480px) {
+  .logo {
+    gap: 0.8rem;
+  }
 }
